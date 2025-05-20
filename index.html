@@ -29,7 +29,7 @@
       font-family: 'Inter', sans-serif;
       margin: 0;
       min-height: 100vh;
-      overflow-x: auto;
+      overflow-x: hidden;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -124,6 +124,7 @@
       right: 1.5rem;
       display: flex;
       gap: 1.5rem;
+      align-items: center;
     }
     .nav a {
       color: var(--gray-100);
@@ -133,6 +134,51 @@
     }
     .nav a:hover {
       color: var(--cyan-400);
+    }
+    .nav .dropdown-container {
+      position: relative;
+    }
+    .nav .dropdown-btn {
+      color: var(--gray-100);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .nav .dropdown-btn:hover {
+      color: var(--cyan-400);
+    }
+    .nav .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0.5rem;
+      padding: 0.5rem 0;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      z-index: 100;
+    }
+    .nav .dropdown-container:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: var(--gray-100);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .nav .dropdown-menu a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--cyan-300);
     }
     .glassmorphism {
       background: rgba(255, 255, 255, 0.1);
@@ -174,6 +220,27 @@
     .download-link:hover, .discord-link:hover {
       color: #000;
     }
+    .feature-section {
+      margin-bottom: 3rem;
+    }
+    .feature-section h2 {
+      margin-bottom: 1.5rem;
+    }
+    .feature-list {
+      text-align: left;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .feature-list ul {
+      list-style: none;
+      padding: 0;
+    }
+    .feature-list li {
+      padding: 0.5rem 0;
+      font-size: 1.1rem;
+      color: var(--gray-100);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
   </style>
 </head>
 <body>
@@ -185,8 +252,27 @@
     <div class="bubble"></div>
     <div class="bubble"></div>
   </div>
-  
-  <div class="hero">
+  <nav class="nav">
+    <a href="#download">HOME</a>
+    <div class="dropdown-container">
+      <span class="dropdown-btn">FEATURES ▼</span>
+      <div class="dropdown-menu">
+        <a href="#settings">⚙️ Settings</a>
+        <a href="#room">🏠 Room</a>
+        <a href="#movement">🏃‍♂️ Movement</a>
+        <a href="#rig">🦍 Rig</a>
+        <a href="#projectiles">💥 Projectiles</a>
+        <a href="#fun">🎉 Fun</a>
+        <a href="#visuals">👀 Visuals</a>
+        <a href="#advantage">🏆 Advantage</a>
+        <a href="#exploits">🛠️ Exploits</a>
+        <a href="#serversided">🌐 ServerSided</a>
+      </div>
+    </div>
+    <a href="#support">SUPPORT</a>
+  </nav>
+  <!-- Download Section (Default View) -->
+  <div id="download" class="hero">
     <h1 class="text-7xl font-extrabold text-cyan-300 mb-6 fade-in">Obsidian.LOL</h1>
     <p class="text-4xl mb-10 text-gray-100 fade-in">Elevate your Gorilla Tag experience with the ultimate mod menu!</p>
     <a href="https://file-na-lax-1.gofile.io/download/web/772c657e-93de-420f-a2fd-1719e10cadec/Obsidian%20V3.5.0.dll" class="bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-4 px-12 rounded-full transition-all hover-scale text-2xl fade-in download-link">
@@ -214,7 +300,272 @@
         </div>
       </div>
     </div>
-    <div class="mt-20">
+    <!-- Feature Sections -->
+    <div id="settings" class="feature-section fade-in">
+      <h2 class="text-5xl font-bold text-cyan-400 mb-6">⚙️ Settings</h2>
+      <div class="feature-list">
+        <ul>
+          <li>Change Menu Type - Switches through options, allowing you to make the menu like a normal one.</li>
+          <li>Change Theme - Changes the theme of the menu.</li>
+          <li>Change Button Sound - Changes the Button Sound.</li>
+          <li>+1 Button Volume - Changes the Button Volume by 1.</li>
+          <li>-1 Button Volume - Changes the Button Volume by -1.</li>
+          <li>Turn Off Ghost Visualizer - Turns off the Ghost Preview.</li>
+          <li>Gun Preview - Allows you to preview the current GunLib.</li>
+          <li>Rainbow GunLib - Makes the GunLib Rainbow.</li>
+          <li>More Wavy Gun Line - Makes the GunLib more wavy.</li>
+          <li>Less Wavy Gun Line - Makes the GunLib less wavy.</li>
+          <li>More Gun Frequency - Adds more waves to the GunLib.</li>
+          <li>Less Gun Frequency - Adds less waves to the GunLib.</li>
+          <li>Reset Gun Line - Resets the GunLib.</li>
+          <li>Un-Smooth Gun - Makes the GunLib Non-Wavy.</li>
+          <li>Criss Cross GunLib - Makes the GunLib have a criss-cross effect.</li>
+          <li>No Line GunLib - Makes the GunLib only have a pointer.</li>
+          <li>Normal Line GunLib - Makes the GunLib straight.</li>
+          <li>Wiggly GunLib - Makes the GunLib Wiggly (Wavy but less frequency).</li>
+          <li>Left Hand GunLib - Puts it at your left hand instead of your left.</li>
+          <li>Ghost Trolling Preset - Turns on Sticky Platforms, Fly, Ghost Monke, and Long Arms.</li>
+          <li>Comp Preset - Turns on Steam Long Arms, Wall-Walk, and Speedboost (LG).</li>
+        </ul>
+      </div>
+    </div>
+    <div id="room" class="feature-section fade-in">
+      <h2 class="text-5xl font-bold text-cyan-400 mb-6">🏠 Room</h2>
+      <div class="feature-list">
+        <ul>
+          <li>Anti Report - When someone tries to report you, you disconnect.</li>
+          <li>Smart Anti Report - When someone tries to report you, you disconnect. (size is based on ping)</li>
+          <li>Anti Ban - Prevents you from getting banned from our mods.</li>
+          <li>Quit Game - Quits your app.</li>
+          <li>Join Random - Makes you join a random lobby.</li>
+          <li>Disconnect - Makes you leave the lobby.</li>
+          <li>Primary Disconnect - When you click your primary, you disconnect.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="movement" class="feature-section fade-in">
+      <h2 class="text-5xl font-bold text-cyan-400 mb-6">🏃‍♂️ Movement</h2>
+      <div class="feature-list">
+        <ul>
+          <li>WASD - Allows you to move with WASD on your keyboard.</li>
+          <li>Platforms - Puts platforms/boxes under your hands by holding your grips.</li>
+          <li>Sticky Platforms - Puts 2 platforms/boxes under your hands by holding your grips, making you stick.</li>
+          <li>Speedboost (LG) - Makes you slightly faster while holding Left-Grip</li>
+          <li>Fly - Adds velocity to you while holding your left primary.</li>
+          <li>Bark Fly - Allows you to fly with Joysticks.</li>
+          <li>No-Clip (RT) - Allows you to passthrough walls.</li>
+          <li>Walk-Walk (RG) - Pulls you towards the wall you last hit.</li>
+          <li>Frozone - Puts ice platforms under your hands by holding your grips.</li>
+          <li>Iron Man - Makes you like Iron-Man, spawning fire underneath you.</li>
+          <li>Pull Mod - Slightly Teleports you wherever you try to move.</li>
+          <li>TP Gun - Teleports you wherever you shoot.</li>
+          <li>Airstrike Gun - Teleports you 100 feet higher wherever you shoot.</li>
+          <li>Punch Mod - Allows others to punch you.</li>
+          <li>Leap Up - Leaps you forward & up.</li>
+          <li>Leap Forward - Leaps you forward.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="rig" class="feature-section fade-in">
+      <h2 class="text-5xl font-bold text-cyan-400 mb-6">🦍 Rig</h2>
+      <div class="feature-list">
+        <ul>
+          <li>Invis Monke - Makes you invisible.</li>
+          <li>Ghost Monke - Makes you a ghost, where you can move around with people seeing your rig frozen.</li>
+          <li>Grab Rig (Grips) - Allows you to Grab Your Rig.</li>
+          <li>Rig Gun - Puts your rig anywhere you shoot.</li>
+          <li>Spin Head (X) - Spins your head in the X Rotation.</li>
+          <li>Spin Head (Y) - Spins your head in the Y Rotation.</li>
+          <li>Spin Head (Z) - Spins your head in the Z Rotation.</li>
+          <li>Spaz Head - Spins your head in the X, Y and Z Rotation.</li>
+          <li>Spaz Rig (A) - Twists your rig in all Rotations.</li>
+          <li>Steam Long Arms - Makes your arms a little longer.</li>
+          <li>Very Long Arms - Makes your arms very long.</li>
+          <li>Short Arms - Makes your arms short.</li>
+          <li>No Finger Movement - Allows you to move with WASD on your keyboard.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="projectiles" class="feature-section fade-in">
+      <h2 class="text-5xl font-bold text-cyan-400 mb-6">💥 Projectiles</h2>
+      <div class="feature-list">
+        <ul>
+          <li>SnowBall Gun - Shoots a Snowball.</li>
+          <li>SnowBall Spam - Spams a Snowball.</li>
+          <li>Vote Rock Gun - Shoots a Vote Rock.</li>
+          <li>Vote Rock Spam - Spams a Vote Rock.</li>
+          <li>Water Balloon Gun - Shoots a Water Balloon.</li>
+          <li>Water Balloon Spam - Spams a Water Balloon.</li>
+          <li>Mentos Gun - Shoots a Mento.</li>
+          <li>Mentos Spam - Spams a Mento.</li>
+          <li>Halloween Gun - Shoots a Halloween Projectile.</li>
+          <li>Halloween Spam - Spams a Halloween Projectile.</li>
+          <li>Gift Gun - Shoots a Gift.</li>
+          <li>Gift Spam - Spams a Gift.</li>
+          <li>Fish Food Gun - Shoots a Fish Food.</li>
+          <li>Fish Food Spam - Spams a Fish Food.</li>
+          <li>Apple Gun - Shoots an Apple.</li>
+          <li>Apple Spam - Spams an Apple.</li>
+          <li>Piss - Spams a Snowball out of you.</li>
+          <li>Poop - Spams a Fish Food underneath you.</li>
+          <li>Bust - Allows you to bust everywhere.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="fun" class="feature-section fade-in">
+      <h2 class="text-5xl font-bold text-cyan-400 mb-6">🎉 Fun</h2>
+      <div class="feature-list">
+        <ul>
+          <li>Fling Gun - Flings whoever you shoot at with snowballs.</li>
+          <li>Small Grenade - Spawns a Grenade at your hand. (based on size)</li>
+          <li>Grenade - Spawns a Grenade at your hand. (based on size)</li>
+          <li>Big Grenade - Spawns a Grenade at your hand. (based on size)</li>
+          <li>Bigger Grenade - Spawns a Grenade at your hand. (based on size)</li>
+          <li>HUGE Grenade - Spawns a Grenade at your hand. (based on size)</li>
+          <li>Grenade Minigun - Shoots a Grenade out of your hand. (based on size)</li>
+          <li>Explode Gun - Plays an Explosion Effect wherever you shoot.</li>
+          <li>Rainbow Lightning - Makes all Lightning Rainbow.</li>
+          <li>Lightning Strike (G) - Shoots Lightning out your hand.</li>
+          <li>Lightning Strike Gun - Spawns Lightning wherever you shoot.</li>
+          <li>Lightning Strike Aura (G) - Spawns Lightning around you.</li>
+          <li>Growing Blackhole (FOREST) - Spawns a Growing Blackhole in Forest.</li>
+          <li>Very Small Blackhole (FOREST) - Spawns a Blackhole in Forest. (based on size)</li>
+          <li>Small Blackhole (FOREST) - Spawns a Blackhole in Forest. (based on size)</li>
+          <li>Medium Blackhole (FOREST) - Spawns a Blackhole in Forest. (based on size)</li>
+          <li>Large Blackhole (FOREST) - Spawns a Blackhole in Forest. (based on size)</li>
+          <li>Massive Blackhole - Spawns a Blackhole in Forest. (based on size)</li>
+          <li>SUPERMASSIVE Blackhole - Spawns a Blackhole in Forest. (based on size)</li>
+          <li>Move Blackhole Gun - Moves the Blackhole to wherever you shoot.</li>
+          <li>Draw - Creates Particles at your Hands.</li>
+          <li>Draw Gun - Creates Particles wherever you shoot.</li>
+          <li>Thin Tracers - Creates a Line going to everyone in the lobby.</li>
+          <li>Rainbow Projectiles (CS) - Makes all projectiles Rainbow.</li>
+          <li>Cube Minigun (CS) - Shoots the desired shape.</li>
+          <li>Big Cube Minigun (CS) - Shoots the desired shape.</li>
+          <li>Bigger Cube Minigun (CS) - Shoots the desired shape.</li>
+          <li>Cube Gun (CS) - Spawns the desired shape wherever you shoot.</li>
+          <li>Sphere Minigun (CS) - Shoots the desired shape.</li>
+          <li>Big Sphere Minigun (CS) - Shoots the desired shape.</li>
+          <li>Bigger Sphere Minigun (CS) - Shoots the desired shape.</li>
+          <li>Sphere Gun (CS) - Spawns the desired shape wherever you shoot.</li>
+          <li>Projectile Blaster (INSANE) - Spawns a LOT of projectiles.</li>
+          <li>Grab Projectiles (CS) - Allows you to Grab the Projectiles</li>
+          <li>Launch Projectile Gun - Launches the projectiles selected.</li>
+          <li>Launch All Projectile - Launches the projectiles selected.</li>
+          <li>Launch Projectile Aura - Launches the projectiles selected.</li>
+          <li>Bring Projectile Gun - Brings the projectiles selected.</li>
+          <li>Bring All Projectile - Brings the projectiles selected.</li>
+          <li>Delete Projectiles - Deletes all Projectiles.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="visuals" class="feature-section fade-in">
+      <h2 class="text-5xl font-bold text-cyan-400 mb-6">👀 Visuals</h2>
+      <div class="feature-list">
+        <ul>
+          <li>Morning Time - Sets the time to Morning.</li>
+          <li>Day Time - Sets the time to Day.</li>
+          <li>Evening Time - Sets the time to Evening.</li>
+          <li>Night Time - Sets the time to Night.</li>
+          <li>NameTags - Puts a Text above everyone showing their name and FPS.</li>
+          <li>WireFrame ESP - Creates a wireframe box around everyone.</li>
+          <li>Bone ESP - Allows you to see the bones of everyone.</li>
+          <li>Box Esp - Creates a box around everyone.</li>
+          <li>Trail All - Creates a trail on everyone.</li>
+          <li>Thick Tracers - Creates a Line going to everyone in the lobby.</li>
+          <li>Thin Tracers - Creates a Line going to everyone in the lobby.</li>
+          <li>Soccerball Trajectory Visual - Shows the ball trajectory.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="advantage" class="feature-section fade-in">
+      <h2 class="text-5xl font-bold text-cyan-400 mb-6">🏆 Advantage</h2>
+      <div class="feature-list">
+        <ul>
+          <li>Flick Tag Gun - 'Flick Tags' the player.</li>
+          <li>Tag All - Tags everyone in the lobby.</li>
+          <li>Tag Gun - Tags the person selected.</li>
+          <li>Tag Self - Tags you.</li>
+          <li>Tag Aura - Tags anyone around you.</li>
+          <li>Grab All (GUARDIAN) - Grabs everyone.</li>
+          <li>Grab Gun (GUARDIAN) - Grabs the person selected.</li>
+          <li>Invis All (GUARDIAN) - Makes everyone Invisible.</li>
+          <li>Invis Gun (GUARDIAN) - Makes the person Invisible.</li>
+          <li>Auto Guardian - Makes you Guardian each round.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="exploits" class="feature-section fade-in">
+      <h2 class="text-5xl font-bold text-cyan-400 mb-6">🛠️ Exploits</h2>
+      <div class="feature-list">
+        <ul>
+          <li>Kick All (STUMP) (PRIVATE) - Kicks everyone in Stump.</li>
+          <li>Kick Gun (STUMP) (PRIVATE) - Kicks whoever you want in Stump.</li>
+          <li>Freeze All - Freezes everyone.</li>
+          <li>Freeeze Gun - Freezes the person selected.</li>
+          <li>Freeze Aura - Freezes everyone around you.</li>
+          <li>Freeze On Touch - Freezes anyone you touch.</li>
+          <li>Stutter All - Strong Lags everyone.</li>
+          <li>Stutter Gun - Strong Lags the person selected.</li>
+          <li>Stutter Aura - Strong Lags everyone around you.</li>
+          <li>Stutter On Touch - Strong Lags anyone you touch.</li>
+          <li>Lag All - Lags everyone.</li>
+          <li>Lag Gun - Lags the person selected.</li>
+          <li>Lag Aura - Lags everyone around you.</li>
+          <li>Slow Gun - Slows the person selected.</li>
+          <li>Slow All - Slows everyone.</li>
+          <li>Destroy Gun (REJOIN) - The people who join can't see the Destroyed Person.</li>
+          <li>Destroy All (REJOIN) - The people who join can't see everyone else.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="serversided" class="feature-section fade-in">
+      <h2 class="text-5xl font-bold text-cyan-400 mb-6">🌐 ServerSided</h2>
+      <div class="feature-list">
+        <ul>
+          <li>Attack Gun (M) - Attacks the person selected.</li>
+          <li>Anti Bee Float - Makes you immune to float from bees.</li>
+          <li>Hide Bee (M) - Hides the bee.</li>
+          <li>Bee Gun (M) - Sets the position of the bee wherever you desire.</li>
+          <li>Bee Grab (M) - Allows you to hold the bees with grips.</li>
+          <li>Bee Grab Gun (M) - Makes the user selected allowed to hold the bees with their grips.</li>
+          <li>Bee Halo (M) - Circles the bee around your head.</li>
+          <li>Bee Halo Gun (M) - Circles the bee around whoever you shoot.</li>
+          <li>Float Gun (M) - Makes the user selected float.</li>
+          <li>Float On Touch (M) - Makes the user selected float.</li>
+          <li>Invis Self - Makes you invisible to everyone else.</li>
+          <li>Card Spam (M) (HORROR Map) - Spawns Credit Cards.</li>
+          <li>Card Gun (M) (HORROR Map) - Spawns Credit Cards wherever you shoot.</li>
+          <li>Immune All (M) (HORROR Map) - Makes everyone immune to the Ghosts.</li>
+          <li>Start Shift (HORROR Map) - Starts the shift.</li>
+          <li>Machine Spam (HORROR Map) - Spams the Machine sounds.</li>
+          <li>VFX Spam (HORROR Map) - Ends the shift.</li>
+          <li>Soccer Ball Gun (MonkeBall Map) - Puts the Ball wherever you shoot.</li>
+          <li>Soccer Ball Shoot (MonkeBall Map) - Spams all the soccer ball sounds.</li>
+          <li>Grab Soccer Ball (MonkeBall Map) - Grabs the soccer ball.</li>
+          <li>Spam Ball FX (M) (MonkeBall Map) - Spams the sounds of the ball.</li>
+          <li>Earrape Gun (M) (CRITTER MAP) - Spams a Noise wherever you desire.</li>
+          <li>Earrape All (M) (CRITTER MAP) - Spams a Noise wherever you desire.</li>
+          <li>Random Effect Spammer (M) (CRITTER MAP) - Spams a Noise wherever you desire.</li>
+          <li>Noise Pop Spammer (M) (CRITTER MAP) - Spams a Noise wherever you desire.</li>
+          <li>Noise Pop Gun (M) (CRITTER MAP) - Spams a Noise wherever you desire.</li>
+          <li>Noise Pop Aura (M) (CRITTER MAP) - Spams a Noise wherever you desire.</li>
+          <li>Noise Pop Halo (M) (CRITTER MAP) - Spams a Noise wherever you desire.</li>
+          <li>Hoverboard Spawn Gun - Spawns HoverBoards wherever you shoot.</li>
+          <li>Hoverboard Spam - Spams a HoverBoard.</li>
+          <li>Hoverboard Shoot - Shoots a HoverBoard. (based on speed)</li>
+          <li>Hoverboard MiniGun - Shoots a HoverBoard. (based on speed)</li>
+          <li>Hoverboard Sniper - Shoots a HoverBoard. (based on speed)</li>
+          <li>Hoverboard Laser - Shoots a HoverBoard. (based on speed)</li>
+          <li>Hoverboard Halo - Makes hoverboards halo around you.</li>
+          <li>Pee Hoverboard - Makes you pee a hoverboard.</li>
+          <li>Poop Hoverboard - Makes you poop a hoverboard.</li>
+          <li>SS Hoverboard - Allows you to grab a hoverboard.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Support Section -->
+    <div id="support" class="mt-20">
       <h2 class="text-5xl font-bold text-cyan-400 mb-6">SUPPORT</h2>
       <p class="text-4xl mb-10 text-gray-100">Need help? Join our Discord community!</p>
       <a href="https://discord.gg/Hg9bjXWw3w" class="bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-4 px-12 rounded-full transition-all hover-scale text-2xl fade-in discord-link">
